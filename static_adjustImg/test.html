@@ -1,0 +1,19 @@
+<input type='file' onchange='getFile(this)'/>
+<img id='img'/>
+<script>
+  
+var URL=window.URL && window.URL.createObjectURL ? window.URL :
+        window.webkitURL && window.webkitURL.createObjectURL ? window.webkitURL :
+            null;
+function readBlobAsDataURL(blob, callback) {
+    var a = new FileReader();
+    a.onload = function(e) {callback(e.target.result);};
+    a.readAsDataURL(blob);
+}
+  function getFile(input){
+      readBlobAsDataURL(input,function(src){
+            img.src=src
+      })
+  }
+
+</script>
